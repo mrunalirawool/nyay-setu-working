@@ -36,14 +36,6 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-
-
-       <!-- NetworkNT JSON Schema Validator -->
-         <dependency>
-                  <groupId>com.networknt</groupId>
-                  <artifactId>json-schema-validator</artifactId>
-                  <version>1.5.6</version>
-         </dependency>
   
     <dependencies>
         <!-- Spring Boot AMQP / RabbitMQ -->
@@ -165,6 +157,13 @@
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
         </dependency>
+
+        <!-- NetworkNT JSON Schema Validator -->
+             <dependency>
+                       <groupId>com.networknt</groupId>
+                       <artifactId>json-schema-validator</artifactId>
+                       <version>1.5.6</version>
+            </dependency>
 
         <!-- Flyway for database migrations -->
         <dependency>
