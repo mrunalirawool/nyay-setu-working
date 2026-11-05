@@ -1,0 +1,64 @@
+
+name: CI Workflow
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  backend:
+    name: Backend
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Set up Java 17
+        uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: '17'
+          cache: maven
+
+      - name: Run Maven Verify
+        working-directory: backend/nyaysetu-backend
+        run: mvn -B verify
+
+  frontend:
+    name: Frontend
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Set up Node.js 20
+        uses: actions/setup-node@v6
+        with:
+          node-version: '20'
+          cache: npm
+          cache-dependency-path: frontend/nyaysetu-frontend/package-lock.json
+
+      - name: Install dependencies and lint
+        working-directory: frontend/nyaysetu-frontend
+        run: npm ci && npm run lint
+
+  nlp:
+    name: NLP
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: nlp-orchestrator/requirements.txt
+
+      - name: Install NLP dependencies
+        working-directory: nlp-orchestrator
+        run: pip install -r requirements.txt
+
