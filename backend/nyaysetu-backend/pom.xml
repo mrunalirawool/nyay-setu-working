@@ -37,6 +37,14 @@
         </dependencies>
     </dependencyManagement>
 
+
+       <!-- NetworkNT JSON Schema Validator -->
+         <dependency>
+                  <groupId>com.networknt</groupId>
+                  <artifactId>json-schema-validator</artifactId>
+                  <version>1.5.6</version>
+         </dependency>
+  
     <dependencies>
         <!-- Spring Boot AMQP / RabbitMQ -->
         <dependency>
